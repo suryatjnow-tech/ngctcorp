@@ -1,0 +1,4219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>NGCT Corporation | Enterprise Technology Solutions</title>
+
+  <meta
+    name="description"
+    content="NGCT Corporation delivers ServiceNow consulting, enterprise automation, cloud transformation, integration and digital technology solutions."
+  >
+
+  <meta name="theme-color" content="#071a2f">
+
+  <style>
+    /* =========================================================
+       NGCT CORPORATION
+       Single-file corporate website
+       ========================================================= */
+
+    :root {
+      --navy-950: #04111f;
+      --navy-900: #071a2f;
+      --navy-800: #0a2946;
+      --navy-700: #103b61;
+
+      --blue-600: #1769e0;
+      --blue-500: #2584f5;
+      --blue-400: #4ca9ff;
+      --cyan: #5dd7e8;
+
+      --green: #6edb7d;
+
+      --ink: #142033;
+      --text: #344054;
+      --muted: #667085;
+
+      --surface: #ffffff;
+      --surface-soft: #f5f8fc;
+      --surface-blue: #edf5ff;
+
+      --border: #e3e9f1;
+
+      --shadow-sm:
+        0 8px 24px rgba(15, 35, 65, 0.08);
+
+      --shadow-md:
+        0 18px 50px rgba(15, 35, 65, 0.12);
+
+      --shadow-lg:
+        0 30px 80px rgba(2, 17, 34, 0.18);
+
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 28px;
+
+      --container: 1180px;
+    }
+
+
+    /* ================================
+       RESET
+       ================================ */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      font-family:
+        Inter,
+        ui-sans-serif,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+      color: var(--ink);
+      background: var(--surface);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+
+    /* ================================
+       TYPOGRAPHY
+       ================================ */
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      margin-bottom: 14px;
+
+      color: var(--blue-600);
+
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    .section-tag::before {
+      content: "";
+      width: 24px;
+      height: 2px;
+      border-radius: 99px;
+      background: var(--blue-500);
+    }
+
+    .section-title {
+      max-width: 780px;
+
+      font-size: clamp(34px, 4vw, 50px);
+      line-height: 1.12;
+      letter-spacing: -1.8px;
+
+      color: var(--ink);
+    }
+
+    .section-description {
+      max-width: 700px;
+
+      margin-top: 18px;
+
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .section-heading {
+      margin-bottom: 55px;
+    }
+
+
+    /* ================================
+       BUTTONS
+       ================================ */
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
+      min-height: 50px;
+      padding: 0 22px;
+
+      border: 0;
+      border-radius: 10px;
+
+      font-size: 14px;
+      font-weight: 750;
+
+      cursor: pointer;
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: #fff;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--blue-600),
+          var(--blue-500)
+        );
+
+      box-shadow:
+        0 14px 30px rgba(23, 105, 224, 0.28);
+    }
+
+    .btn-primary:hover {
+      box-shadow:
+        0 18px 40px rgba(23, 105, 224, 0.38);
+    }
+
+    .btn-light {
+      color: var(--navy-900);
+      background: #fff;
+
+      box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.14);
+    }
+
+    .btn-outline-light {
+      color: #fff;
+
+      border: 1px solid rgba(255, 255, 255, 0.22);
+
+      background:
+        rgba(255, 255, 255, 0.06);
+
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-outline-light:hover {
+      background:
+        rgba(255, 255, 255, 0.11);
+    }
+
+
+    /* ================================
+       NAVIGATION
+       ================================ */
+
+    .navbar {
+      position: fixed;
+      inset: 0 0 auto 0;
+
+      z-index: 1000;
+
+      transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        backdrop-filter 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      background:
+        rgba(4, 17, 31, 0.94);
+
+      backdrop-filter: blur(16px);
+
+      box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.14);
+    }
+
+    .nav-container {
+      min-height: 80px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+
+      color: #fff;
+    }
+
+    .brand-mark {
+      position: relative;
+
+      width: 42px;
+      height: 42px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 12px;
+
+      background:
+        linear-gradient(
+          145deg,
+          var(--blue-500),
+          var(--cyan)
+        );
+
+      box-shadow:
+        0 10px 25px rgba(37, 132, 245, 0.32);
+
+      font-size: 19px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .brand-mark::after {
+      content: "";
+
+      position: absolute;
+
+      width: 8px;
+      height: 8px;
+
+      right: 5px;
+      bottom: 5px;
+
+      border-radius: 50%;
+
+      background: var(--green);
+
+      border: 2px solid var(--navy-900);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+
+      line-height: 1.1;
+    }
+
+    .brand-name {
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+    }
+
+    .brand-subtitle {
+      margin-top: 3px;
+
+      color: #9fb8d2;
+
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+
+      color: #c9d7e7;
+
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .nav-link {
+      position: relative;
+
+      padding: 30px 0;
+
+      transition: color 0.2s ease;
+    }
+
+    .nav-link::after {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      right: 100%;
+      bottom: 21px;
+
+      height: 2px;
+
+      border-radius: 99px;
+
+      background: var(--blue-400);
+
+      transition: right 0.25s ease;
+    }
+
+    .nav-link:hover {
+      color: #fff;
+    }
+
+    .nav-link:hover::after {
+      right: 0;
+    }
+
+    .nav-contact {
+      padding: 11px 18px;
+
+      border-radius: 9px;
+
+      color: var(--navy-900);
+
+      background: #fff;
+
+      font-weight: 750;
+    }
+
+    .menu-button {
+      display: none;
+
+      width: 44px;
+      height: 44px;
+
+      border: 0;
+      background: transparent;
+
+      color: #fff;
+
+      cursor: pointer;
+    }
+
+    .menu-button span {
+      display: block;
+
+      width: 25px;
+      height: 2px;
+
+      margin: 5px auto;
+
+      background: currentColor;
+
+      border-radius: 99px;
+
+      transition: 0.25s ease;
+    }
+
+
+    /* ================================
+       HERO
+       ================================ */
+
+    .hero {
+      position: relative;
+
+      min-height: 790px;
+
+      display: flex;
+      align-items: center;
+
+      padding-top: 80px;
+
+      overflow: hidden;
+
+      color: #fff;
+
+      background:
+        radial-gradient(
+          circle at 84% 30%,
+          rgba(46, 157, 255, 0.26),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 55% 110%,
+          rgba(57, 201, 229, 0.16),
+          transparent 34%
+        ),
+        linear-gradient(
+          120deg,
+          #04111f 0%,
+          #071a2f 47%,
+          #0a3154 100%
+        );
+    }
+
+    .hero-grid-pattern {
+      position: absolute;
+      inset: 0;
+
+      opacity: 0.6;
+
+      background-image:
+        linear-gradient(
+          rgba(255, 255, 255, 0.035) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.035) 1px,
+          transparent 1px
+        );
+
+      background-size: 55px 55px;
+
+      mask-image:
+        linear-gradient(
+          to bottom,
+          black 20%,
+          transparent 92%
+        );
+    }
+
+    .hero-glow {
+      position: absolute;
+
+      width: 480px;
+      height: 480px;
+
+      right: -180px;
+      top: 100px;
+
+      border-radius: 50%;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    .hero-glow::before,
+    .hero-glow::after {
+      content: "";
+
+      position: absolute;
+      border-radius: inherit;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .hero-glow::before {
+      inset: 60px;
+    }
+
+    .hero-glow::after {
+      inset: 125px;
+    }
+
+    .hero-layout {
+      position: relative;
+      z-index: 2;
+
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 70px;
+
+      align-items: center;
+
+      padding: 95px 0 120px;
+    }
+
+    .hero-badge {
+      width: fit-content;
+
+      display: flex;
+      align-items: center;
+      gap: 9px;
+
+      margin-bottom: 23px;
+
+      padding: 8px 13px;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.14);
+
+      border-radius: 999px;
+
+      background:
+        rgba(255, 255, 255, 0.055);
+
+      color: #c9dbed;
+
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .hero-badge-dot {
+      width: 8px;
+      height: 8px;
+
+      border-radius: 50%;
+
+      background: var(--green);
+
+      box-shadow:
+        0 0 14px rgba(110, 219, 125, 0.8);
+    }
+
+    .hero h1 {
+      max-width: 720px;
+
+      font-size: clamp(50px, 6vw, 76px);
+      line-height: 1.03;
+      letter-spacing: -3.5px;
+
+      font-weight: 800;
+    }
+
+    .hero-highlight {
+      color: #7fd3ff;
+    }
+
+    .hero-description {
+      max-width: 650px;
+
+      margin-top: 25px;
+
+      color: #b3c6da;
+
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+
+      margin-top: 34px;
+    }
+
+    .hero-note {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+
+      margin-top: 32px;
+
+      color: #8fa8c1;
+
+      font-size: 12px;
+      font-weight: 650;
+    }
+
+    .hero-note span {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .hero-note span::before {
+      content: "✓";
+
+      color: #74db84;
+      font-weight: 900;
+    }
+
+
+    /* ================================
+       HERO CAPABILITY PANEL
+       ================================ */
+
+    .hero-panel {
+      position: relative;
+
+      min-height: 480px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .orbit {
+      position: absolute;
+
+      width: 390px;
+      height: 390px;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.09);
+
+      border-radius: 50%;
+    }
+
+    .orbit::before {
+      content: "";
+
+      position: absolute;
+      inset: 48px;
+
+      border:
+        1px dashed rgba(255, 255, 255, 0.08);
+
+      border-radius: inherit;
+    }
+
+    .capability-window {
+      position: relative;
+      z-index: 2;
+
+      width: min(100%, 410px);
+
+      padding: 26px;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+      border-radius: 22px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.11),
+          rgba(255, 255, 255, 0.045)
+        );
+
+      backdrop-filter: blur(20px);
+
+      box-shadow: var(--shadow-lg);
+    }
+
+    .window-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 22px;
+    }
+
+    .window-title {
+      color: #e9f3ff;
+
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .window-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+
+      color: #8fe99a;
+
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .window-status::before {
+      content: "";
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: #72dd82;
+    }
+
+    .capability-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .capability-item {
+      display: grid;
+      grid-template-columns: 43px 1fr auto;
+      gap: 13px;
+
+      align-items: center;
+
+      padding: 14px;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.08);
+
+      border-radius: 12px;
+
+      background:
+        rgba(255, 255, 255, 0.045);
+
+      transition:
+        transform 0.25s ease,
+        background 0.25s ease;
+    }
+
+    .capability-item:hover {
+      transform: translateX(4px);
+
+      background:
+        rgba(255, 255, 255, 0.075);
+    }
+
+    .capability-icon {
+      width: 43px;
+      height: 43px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 10px;
+
+      color: #d9efff;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(37, 132, 245, 0.34),
+          rgba(93, 215, 232, 0.14)
+        );
+
+      font-size: 17px;
+    }
+
+    .capability-item strong {
+      display: block;
+
+      color: #f4f9ff;
+
+      font-size: 13px;
+    }
+
+    .capability-item small {
+      display: block;
+
+      margin-top: 2px;
+
+      color: #8fa7bf;
+
+      font-size: 10px;
+    }
+
+    .capability-arrow {
+      color: #76bfff;
+      font-size: 17px;
+    }
+
+
+    /* ================================
+       VALUE STRIP
+       ================================ */
+
+    .value-strip {
+      position: relative;
+      z-index: 10;
+
+      margin-top: -55px;
+    }
+
+    .value-strip-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+
+      overflow: hidden;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 18px;
+
+      background: #fff;
+
+      box-shadow: var(--shadow-md);
+    }
+
+    .value-item {
+      min-height: 118px;
+
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
+      padding: 25px;
+
+      border-right:
+        1px solid var(--border);
+    }
+
+    .value-item:last-child {
+      border-right: 0;
+    }
+
+    .value-icon {
+      flex: 0 0 45px;
+
+      width: 45px;
+      height: 45px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 11px;
+
+      color: var(--blue-600);
+
+      background: var(--surface-blue);
+
+      font-size: 18px;
+    }
+
+    .value-item strong {
+      display: block;
+
+      font-size: 14px;
+      line-height: 1.3;
+    }
+
+    .value-item span {
+      display: block;
+
+      margin-top: 4px;
+
+      color: var(--muted);
+
+      font-size: 11px;
+      line-height: 1.4;
+    }
+
+
+    /* ================================
+       SECTIONS
+       ================================ */
+
+    section {
+      padding: 105px 0;
+    }
+
+
+    /* ================================
+       SERVICES
+       ================================ */
+
+    .services {
+      padding-top: 150px;
+    }
+
+    .services-heading-row {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 50px;
+
+      margin-bottom: 50px;
+    }
+
+    .services-heading-row .section-heading {
+      margin-bottom: 0;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      position: relative;
+
+      min-height: 305px;
+
+      display: flex;
+      flex-direction: column;
+
+      padding: 31px;
+
+      overflow: hidden;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 17px;
+
+      background: #fff;
+
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+    }
+
+    .service-card::before {
+      content: "";
+
+      position: absolute;
+
+      width: 120px;
+      height: 120px;
+
+      right: -55px;
+      top: -55px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(37, 132, 245, 0.06);
+
+      transition:
+        transform 0.35s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-7px);
+
+      border-color: #cbdcf0;
+
+      box-shadow: var(--shadow-md);
+    }
+
+    .service-card:hover::before {
+      transform: scale(1.5);
+    }
+
+    .service-icon {
+      width: 51px;
+      height: 51px;
+
+      display: grid;
+      place-items: center;
+
+      margin-bottom: 24px;
+
+      border-radius: 12px;
+
+      color: var(--blue-600);
+
+      background:
+        linear-gradient(
+          145deg,
+          #e9f4ff,
+          #f3f9ff
+        );
+
+      font-size: 21px;
+    }
+
+    .service-card h3 {
+      margin-bottom: 11px;
+
+      font-size: 19px;
+      letter-spacing: -0.3px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    .service-link {
+      width: fit-content;
+
+      margin-top: auto;
+      padding-top: 24px;
+
+      color: var(--blue-600);
+
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+
+    /* ================================
+       ABOUT
+       ================================ */
+
+    .about {
+      background: var(--surface-soft);
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 85px;
+
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+
+      min-height: 510px;
+
+      overflow: hidden;
+
+      border-radius: var(--radius-lg);
+
+      background:
+        radial-gradient(
+          circle at 15% 15%,
+          rgba(93, 215, 232, 0.3),
+          transparent 30%
+        ),
+        linear-gradient(
+          145deg,
+          var(--navy-900),
+          #0a3d67
+        );
+
+      box-shadow: var(--shadow-md);
+    }
+
+    .about-visual-grid {
+      position: absolute;
+      inset: 0;
+
+      opacity: 0.45;
+
+      background-image:
+        linear-gradient(
+          rgba(255, 255, 255, 0.04) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.04) 1px,
+          transparent 1px
+        );
+
+      background-size: 38px 38px;
+    }
+
+    .about-main-card {
+      position: absolute;
+
+      left: 50%;
+      top: 50%;
+
+      width: 66%;
+
+      transform:
+        translate(-50%, -50%);
+
+      padding: 30px;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.13);
+
+      border-radius: 20px;
+
+      color: #fff;
+
+      background:
+        rgba(255, 255, 255, 0.08);
+
+      backdrop-filter: blur(15px);
+
+      box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.2);
+    }
+
+    .about-main-card small {
+      color: #92c9ef;
+
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .about-main-card h3 {
+      margin-top: 10px;
+
+      font-size: 29px;
+      line-height: 1.2;
+      letter-spacing: -1px;
+    }
+
+    .about-main-card p {
+      margin-top: 13px;
+
+      color: #b9cee0;
+
+      font-size: 12px;
+    }
+
+    .floating-card {
+      position: absolute;
+
+      padding: 14px 17px;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+      border-radius: 12px;
+
+      color: #fff;
+
+      background:
+        rgba(255, 255, 255, 0.1);
+
+      backdrop-filter: blur(14px);
+
+      box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.18);
+
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .floating-card.one {
+      top: 54px;
+      right: 30px;
+    }
+
+    .floating-card.two {
+      bottom: 48px;
+      left: 29px;
+    }
+
+    .about-copy .section-title {
+      max-width: 620px;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 21px;
+
+      margin-top: 32px;
+    }
+
+    .feature-item {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 14px;
+
+      align-items: start;
+    }
+
+    .feature-check {
+      width: 40px;
+      height: 40px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 10px;
+
+      color: #248f3b;
+
+      background: #eaf8ed;
+
+      font-weight: 900;
+    }
+
+    .feature-item h4 {
+      margin-bottom: 4px;
+
+      font-size: 15px;
+    }
+
+    .feature-item p {
+      color: var(--muted);
+
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+
+    /* ================================
+       SERVICENOW EXPERTISE
+       ================================ */
+
+    .platform {
+      position: relative;
+
+      overflow: hidden;
+
+      color: #fff;
+
+      background:
+        radial-gradient(
+          circle at 85% 15%,
+          rgba(37, 132, 245, 0.22),
+          transparent 25%
+        ),
+        linear-gradient(
+          130deg,
+          #04111f,
+          #071d34 55%,
+          #0a3152
+        );
+    }
+
+    .platform .section-tag {
+      color: #73c5ff;
+    }
+
+    .platform .section-tag::before {
+      background: #73c5ff;
+    }
+
+    .platform .section-title {
+      color: #fff;
+    }
+
+    .platform .section-description {
+      color: #a7bdd2;
+    }
+
+    .platform-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+
+      margin-top: 55px;
+    }
+
+    .platform-card {
+      min-height: 180px;
+
+      padding: 25px;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.1);
+
+      border-radius: 15px;
+
+      background:
+        rgba(255, 255, 255, 0.045);
+
+      transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease;
+    }
+
+    .platform-card:hover {
+      transform: translateY(-5px);
+
+      border-color:
+        rgba(115, 197, 255, 0.35);
+
+      background:
+        rgba(255, 255, 255, 0.075);
+    }
+
+    .platform-card-number {
+      margin-bottom: 22px;
+
+      color: #68bdf7;
+
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+    }
+
+    .platform-card h3 {
+      margin-bottom: 8px;
+
+      font-size: 17px;
+    }
+
+    .platform-card p {
+      color: #93aac0;
+
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+
+    /* ================================
+       DELIVERY APPROACH
+       ================================ */
+
+    .approach {
+      background: #fff;
+    }
+
+    .approach-layout {
+      display: grid;
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 80px;
+
+      align-items: start;
+    }
+
+    .approach-intro {
+      position: sticky;
+      top: 120px;
+    }
+
+    .approach-steps {
+      display: grid;
+      gap: 18px;
+    }
+
+    .approach-step {
+      display: grid;
+      grid-template-columns: 65px 1fr;
+      gap: 22px;
+
+      padding: 27px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 15px;
+
+      background: #fff;
+
+      transition:
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+    }
+
+    .approach-step:hover {
+      transform: translateX(4px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .step-number {
+      width: 54px;
+      height: 54px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 13px;
+
+      color: var(--blue-600);
+
+      background: var(--surface-blue);
+
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .approach-step h3 {
+      margin-bottom: 6px;
+
+      font-size: 17px;
+    }
+
+    .approach-step p {
+      color: var(--muted);
+
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+
+    /* ================================
+       INDUSTRIES
+       ================================ */
+
+    .industries {
+      background: var(--surface-soft);
+    }
+
+    .industry-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .industry-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+
+      min-height: 105px;
+
+      padding: 22px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 14px;
+
+      background: #fff;
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .industry-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .industry-icon {
+      flex: 0 0 47px;
+
+      width: 47px;
+      height: 47px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 11px;
+
+      color: var(--blue-600);
+
+      background: var(--surface-blue);
+    }
+
+    .industry-card strong {
+      display: block;
+
+      font-size: 14px;
+    }
+
+    .industry-card span {
+      display: block;
+
+      margin-top: 3px;
+
+      color: var(--muted);
+
+      font-size: 11px;
+    }
+
+
+    /* ================================
+       CTA
+       ================================ */
+
+    .cta-section {
+      padding:
+        0 0 105px;
+
+      background: var(--surface-soft);
+    }
+
+    .cta-panel {
+      position: relative;
+
+      overflow: hidden;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+
+      padding: 65px;
+
+      border-radius: 24px;
+
+      color: #fff;
+
+      background:
+        radial-gradient(
+          circle at 90% 15%,
+          rgba(93, 215, 232, 0.23),
+          transparent 28%
+        ),
+        linear-gradient(
+          130deg,
+          #061528,
+          #0a3559
+        );
+    }
+
+    .cta-panel::after {
+      content: "";
+
+      position: absolute;
+
+      width: 280px;
+      height: 280px;
+
+      right: -80px;
+      bottom: -150px;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.1);
+
+      border-radius: 50%;
+    }
+
+    .cta-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-copy h2 {
+      max-width: 670px;
+
+      font-size: clamp(31px, 4vw, 44px);
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+    }
+
+    .cta-copy p {
+      max-width: 650px;
+
+      margin-top: 13px;
+
+      color: #aec4d8;
+
+      font-size: 14px;
+    }
+
+    .cta-panel .btn {
+      position: relative;
+      z-index: 2;
+
+      flex-shrink: 0;
+    }
+
+
+    /* ================================
+       CONTACT
+       ================================ */
+
+    .contact {
+      background: #fff;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 80px;
+    }
+
+    .contact-details {
+      display: grid;
+      gap: 16px;
+
+      margin-top: 35px;
+    }
+
+    .contact-item {
+      display: grid;
+      grid-template-columns: 45px 1fr;
+      gap: 14px;
+
+      align-items: center;
+    }
+
+    .contact-icon {
+      width: 45px;
+      height: 45px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 11px;
+
+      color: var(--blue-600);
+
+      background: var(--surface-blue);
+    }
+
+    .contact-item small {
+      display: block;
+
+      color: var(--muted);
+
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .contact-item a,
+    .contact-item span {
+      display: inline-block;
+
+      margin-top: 2px;
+
+      color: var(--ink);
+
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .contact-item a:hover {
+      color: var(--blue-600);
+    }
+
+    .contact-form {
+      padding: 35px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 18px;
+
+      background: var(--surface-soft);
+
+      box-shadow: var(--shadow-sm);
+    }
+
+    .form-title {
+      margin-bottom: 25px;
+
+      font-size: 20px;
+      letter-spacing: -0.4px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 17px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .field label {
+      color: #344054;
+
+      font-size: 11px;
+      font-weight: 750;
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+      width: 100%;
+
+      padding: 13px 14px;
+
+      border:
+        1px solid #d8e0e9;
+
+      border-radius: 9px;
+
+      outline: none;
+
+      color: var(--ink);
+      background: #fff;
+
+      font-size: 13px;
+
+      transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+      border-color: var(--blue-500);
+
+      box-shadow:
+        0 0 0 3px rgba(37, 132, 245, 0.1);
+    }
+
+    .field textarea {
+      min-height: 125px;
+      resize: vertical;
+    }
+
+    .form-note {
+      margin-top: 13px;
+
+      color: var(--muted);
+
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+
+    /* ================================
+       FOOTER
+       ================================ */
+
+    .footer {
+      color: #9eb1c4;
+
+      background: var(--navy-950);
+    }
+
+    .footer-main {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr 1fr;
+      gap: 55px;
+
+      padding: 65px 0 45px;
+    }
+
+    .footer-brand-copy {
+      max-width: 370px;
+
+      margin-top: 18px;
+
+      color: #8298ad;
+
+      font-size: 12px;
+      line-height: 1.75;
+    }
+
+    .footer-column h4 {
+      margin-bottom: 17px;
+
+      color: #fff;
+
+      font-size: 12px;
+      letter-spacing: 0.3px;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      width: fit-content;
+
+      color: #879caf;
+
+      font-size: 11px;
+
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+
+      padding: 25px 0 30px;
+
+      border-top:
+        1px solid rgba(255, 255, 255, 0.07);
+
+      color: #70869a;
+
+      font-size: 10px;
+    }
+
+
+    /* ================================
+       ANIMATIONS
+       ================================ */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+
+      transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+
+    /* ================================
+       RESPONSIVE
+       ================================ */
+
+    @media (max-width: 1050px) {
+
+      .hero-layout {
+        grid-template-columns: 1fr 0.8fr;
+        gap: 35px;
+      }
+
+      .service-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .platform-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .value-strip-inner {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .value-item:nth-child(2) {
+        border-right: 0;
+      }
+
+      .value-item:nth-child(-n + 2) {
+        border-bottom:
+          1px solid var(--border);
+      }
+    }
+
+
+    @media (max-width: 900px) {
+
+      .nav-links {
+        position: fixed;
+
+        top: 80px;
+        left: 0;
+        right: 0;
+
+        height:
+          calc(100vh - 80px);
+
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+
+        padding: 25px 30px;
+
+        background:
+          rgba(4, 17, 31, 0.98);
+
+        backdrop-filter: blur(20px);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-link {
+        padding: 17px 0;
+
+        border-bottom:
+          1px solid rgba(255, 255, 255, 0.08);
+
+        font-size: 15px;
+      }
+
+      .nav-link::after {
+        display: none;
+      }
+
+      .nav-contact {
+        margin-top: 20px;
+
+        text-align: center;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .hero-layout {
+        grid-template-columns: 1fr;
+
+        padding:
+          100px 0 135px;
+      }
+
+      .hero-copy {
+        max-width: 760px;
+      }
+
+      .hero-panel {
+        display: none;
+      }
+
+      .about-layout,
+      .approach-layout,
+      .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 55px;
+      }
+
+      .approach-intro {
+        position: static;
+      }
+
+      .industry-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .footer-main {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .cta-panel {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+
+    @media (max-width: 620px) {
+
+      .container {
+        width:
+          min(var(--container), calc(100% - 28px));
+      }
+
+      section {
+        padding: 78px 0;
+      }
+
+      .brand-subtitle {
+        display: none;
+      }
+
+      .brand-name {
+        font-size: 17px;
+      }
+
+      .hero {
+        min-height: 720px;
+      }
+
+      .hero-layout {
+        padding:
+          90px 0 115px;
+      }
+
+      .hero h1 {
+        font-size: clamp(43px, 13vw, 59px);
+        letter-spacing: -2.7px;
+      }
+
+      .hero-description {
+        font-size: 16px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .hero-note {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .value-strip {
+        margin-top: -35px;
+      }
+
+      .value-strip-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .value-item {
+        border-right: 0;
+        border-bottom:
+          1px solid var(--border);
+      }
+
+      .value-item:last-child {
+        border-bottom: 0;
+      }
+
+      .services {
+        padding-top: 110px;
+      }
+
+      .services-heading-row {
+        display: block;
+      }
+
+      .service-grid,
+      .platform-grid,
+      .industry-grid,
+      .footer-main,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-visual {
+        min-height: 400px;
+      }
+
+      .about-main-card {
+        width: 76%;
+      }
+
+      .about-main-card h3 {
+        font-size: 24px;
+      }
+
+      .approach-step {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-section {
+        padding-bottom: 78px;
+      }
+
+      .cta-panel {
+        padding: 38px 26px;
+      }
+
+      .contact-form {
+        padding: 25px 20px;
+      }
+
+      .footer-main {
+        gap: 35px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =========================================
+       NAVIGATION
+       ========================================= -->
+
+  <nav class="navbar" id="navbar">
+
+    <div class="container nav-container">
+
+      <a
+        href="#home"
+        class="brand"
+        aria-label="NGCT Corporation home"
+      >
+
+        <div class="brand-mark">
+          N
+        </div>
+
+        <div class="brand-text">
+
+          <span class="brand-name">
+            NGCT Corporation
+          </span>
+
+          <span class="brand-subtitle">
+            Enterprise Technology
+          </span>
+
+        </div>
+
+      </a>
+
+
+      <div
+        class="nav-links"
+        id="navLinks"
+      >
+
+        <a
+          class="nav-link"
+          href="#about"
+        >
+          About
+        </a>
+
+        <a
+          class="nav-link"
+          href="#services"
+        >
+          Services
+        </a>
+
+        <a
+          class="nav-link"
+          href="#servicenow"
+        >
+          ServiceNow
+        </a>
+
+        <a
+          class="nav-link"
+          href="#approach"
+        >
+          Approach
+        </a>
+
+        <a
+          class="nav-link"
+          href="#industries"
+        >
+          Industries
+        </a>
+
+        <a
+          class="nav-contact"
+          href="#contact"
+        >
+          Let's Talk
+        </a>
+
+      </div>
+
+
+      <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+      >
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+      </button>
+
+    </div>
+
+  </nav>
+
+
+  <!-- =========================================
+       HERO
+       ========================================= -->
+
+  <header
+    class="hero"
+    id="home"
+  >
+
+    <div class="hero-grid-pattern"></div>
+    <div class="hero-glow"></div>
+
+
+    <div class="container hero-layout">
+
+
+      <!-- HERO LEFT -->
+
+      <div class="hero-copy">
+
+        <div class="hero-badge">
+
+          <span class="hero-badge-dot"></span>
+
+          Enterprise Technology &
+          Digital Transformation
+
+        </div>
+
+
+        <h1>
+
+          Build smarter.
+          <br>
+
+          Operate
+          <span class="hero-highlight">
+            better.
+          </span>
+
+        </h1>
+
+
+        <p class="hero-description">
+
+          NGCT Corporation helps organizations
+          modernize enterprise operations through
+          ServiceNow, intelligent automation,
+          cloud technologies and connected digital
+          experiences.
+
+        </p>
+
+
+        <div class="hero-actions">
+
+          <a
+            href="#contact"
+            class="btn btn-primary"
+          >
+            Start a Conversation
+            <span>→</span>
+          </a>
+
+          <a
+            href="#services"
+            class="btn btn-outline-light"
+          >
+            Explore Our Capabilities
+          </a>
+
+        </div>
+
+
+        <div class="hero-note">
+
+          <span>
+            Business-first strategy
+          </span>
+
+          <span>
+            Scalable architecture
+          </span>
+
+          <span>
+            Agile delivery
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- HERO RIGHT -->
+
+      <div class="hero-panel">
+
+        <div class="orbit"></div>
+
+
+        <div class="capability-window">
+
+          <div class="window-header">
+
+            <div class="window-title">
+              Enterprise Capabilities
+            </div>
+
+            <div class="window-status">
+              Connected
+            </div>
+
+          </div>
+
+
+          <div class="capability-list">
+
+
+            <div class="capability-item">
+
+              <div class="capability-icon">
+                ◈
+              </div>
+
+              <div>
+                <strong>
+                  ServiceNow
+                </strong>
+
+                <small>
+                  Workflow transformation
+                </small>
+              </div>
+
+              <div class="capability-arrow">
+                →
+              </div>
+
+            </div>
+
+
+            <div class="capability-item">
+
+              <div class="capability-icon">
+                ✦
+              </div>
+
+              <div>
+                <strong>
+                  Automation & AI
+                </strong>
+
+                <small>
+                  Intelligent operations
+                </small>
+              </div>
+
+              <div class="capability-arrow">
+                →
+              </div>
+
+            </div>
+
+
+            <div class="capability-item">
+
+              <div class="capability-icon">
+                ↔
+              </div>
+
+              <div>
+                <strong>
+                  Integration
+                </strong>
+
+                <small>
+                  Connected enterprise systems
+                </small>
+              </div>
+
+              <div class="capability-arrow">
+                →
+              </div>
+
+            </div>
+
+
+            <div class="capability-item">
+
+              <div class="capability-icon">
+                ☁
+              </div>
+
+              <div>
+                <strong>
+                  Cloud Solutions
+                </strong>
+
+                <small>
+                  Modern scalable platforms
+                </small>
+              </div>
+
+              <div class="capability-arrow">
+                →
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================================
+       VALUE STRIP
+       ========================================= -->
+
+  <div class="value-strip">
+
+    <div class="container">
+
+      <div class="value-strip-inner">
+
+
+        <div class="value-item">
+
+          <div class="value-icon">
+            ◎
+          </div>
+
+          <div>
+            <strong>
+              Strategy to Delivery
+            </strong>
+
+            <span>
+              End-to-end technology execution
+            </span>
+          </div>
+
+        </div>
+
+
+        <div class="value-item">
+
+          <div class="value-icon">
+            ◇
+          </div>
+
+          <div>
+            <strong>
+              Enterprise Focus
+            </strong>
+
+            <span>
+              Solutions built to scale
+            </span>
+          </div>
+
+        </div>
+
+
+        <div class="value-item">
+
+          <div class="value-icon">
+            ⚙
+          </div>
+
+          <div>
+            <strong>
+              Workflow Expertise
+            </strong>
+
+            <span>
+              Connected digital operations
+            </span>
+          </div>
+
+        </div>
+
+
+        <div class="value-item">
+
+          <div class="value-icon">
+            ✓
+          </div>
+
+          <div>
+            <strong>
+              Client Partnership
+            </strong>
+
+            <span>
+              Collaborative delivery model
+            </span>
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================
+       SERVICES
+       ========================================= -->
+
+  <section
+    class="services"
+    id="services"
+  >
+
+    <div class="container">
+
+
+      <div class="services-heading-row">
+
+        <div class="section-heading reveal">
+
+          <div class="section-tag">
+            What We Do
+          </div>
+
+          <h2 class="section-title">
+
+            Technology solutions designed
+            around your business.
+
+          </h2>
+
+          <p class="section-description">
+
+            We combine platform expertise,
+            engineering and strategic consulting
+            to help organizations simplify
+            complexity and accelerate transformation.
+
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="service-grid">
+
+
+        <!-- 1 -->
+
+        <article class="service-card reveal">
+
+          <div class="service-icon">
+            ◈
+          </div>
+
+          <h3>
+            ServiceNow Consulting
+          </h3>
+
+          <p>
+
+            Define platform strategy,
+            architecture and transformation
+            roadmaps aligned with your
+            operational priorities.
+
+          </p>
+
+          <a
+            href="#contact"
+            class="service-link"
+          >
+            Discuss your goals →
+          </a>
+
+        </article>
+
+
+        <!-- 2 -->
+
+        <article class="service-card reveal">
+
+          <div class="service-icon">
+            ⚙
+          </div>
+
+          <h3>
+            Implementation & Development
+          </h3>
+
+          <p>
+
+            Build scalable ServiceNow solutions,
+            applications and workflows with
+            maintainable architecture and
+            intuitive user experiences.
+
+          </p>
+
+          <a
+            href="#contact"
+            class="service-link"
+          >
+            Discuss your goals →
+          </a>
+
+        </article>
+
+
+        <!-- 3 -->
+
+        <article class="service-card reveal">
+
+          <div class="service-icon">
+            ↔
+          </div>
+
+          <h3>
+            Enterprise Integration
+          </h3>
+
+          <p>
+
+            Connect applications, platforms
+            and data sources to create
+            consistent experiences and
+            seamless enterprise workflows.
+
+          </p>
+
+          <a
+            href="#contact"
+            class="service-link"
+          >
+            Discuss your goals →
+          </a>
+
+        </article>
+
+
+        <!-- 4 -->
+
+        <article class="service-card reveal">
+
+          <div class="service-icon">
+            ✦
+          </div>
+
+          <h3>
+            AI & Intelligent Automation
+          </h3>
+
+          <p>
+
+            Improve productivity through
+            workflow automation, AI-assisted
+            experiences and intelligent
+            operational processes.
+
+          </p>
+
+          <a
+            href="#contact"
+            class="service-link"
+          >
+            Discuss your goals →
+          </a>
+
+        </article>
+
+
+        <!-- 5 -->
+
+        <article class="service-card reveal">
+
+          <div class="service-icon">
+            ☁
+          </div>
+
+          <h3>
+            Cloud & Digital Modernization
+          </h3>
+
+          <p>
+
+            Modernize applications and
+            technology foundations with
+            flexible, secure and scalable
+            cloud-focused solutions.
+
+          </p>
+
+          <a
+            href="#contact"
+            class="service-link"
+          >
+            Discuss your goals →
+          </a>
+
+        </article>
+
+
+        <!-- 6 -->
+
+        <article class="service-card reveal">
+
+          <div class="service-icon">
+            ◎
+          </div>
+
+          <h3>
+            Platform Optimization
+          </h3>
+
+          <p>
+
+            Improve existing environments
+            through performance reviews,
+            platform enhancements,
+            governance and continuous
+            optimization.
+
+          </p>
+
+          <a
+            href="#contact"
+            class="service-link"
+          >
+            Discuss your goals →
+          </a>
+
+        </article>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================
+       ABOUT
+       ========================================= -->
+
+  <section
+    class="about"
+    id="about"
+  >
+
+    <div class="container about-layout">
+
+
+      <!-- VISUAL -->
+
+      <div class="about-visual reveal">
+
+        <div class="about-visual-grid"></div>
+
+
+        <div class="floating-card one">
+          Intelligent Workflows
+        </div>
+
+
+        <div class="floating-card two">
+          Enterprise Transformation
+        </div>
+
+
+        <div class="about-main-card">
+
+          <small>
+            NGCT Corporation
+          </small>
+
+          <h3>
+            Technology that moves
+            business forward.
+          </h3>
+
+          <p>
+
+            Connecting strategy,
+            platforms and people to create
+            simpler and more effective
+            digital operations.
+
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- COPY -->
+
+      <div class="about-copy reveal">
+
+        <div class="section-tag">
+          About NGCT
+        </div>
+
+        <h2 class="section-title">
+
+          More than implementation.
+          A technology partner.
+
+        </h2>
+
+        <p class="section-description">
+
+          NGCT Corporation works with
+          organizations to solve complex
+          technology challenges with practical,
+          scalable solutions. Our approach
+          connects business needs with strong
+          engineering and thoughtful platform
+          design.
+
+        </p>
+
+
+        <div class="feature-list">
+
+
+          <div class="feature-item">
+
+            <div class="feature-check">
+              ✓
+            </div>
+
+            <div>
+
+              <h4>
+                Business-first thinking
+              </h4>
+
+              <p>
+
+                We start with the outcome,
+                not the technology, and design
+                solutions around the way your
+                organization needs to operate.
+
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="feature-item">
+
+            <div class="feature-check">
+              ✓
+            </div>
+
+            <div>
+
+              <h4>
+                Sustainable architecture
+              </h4>
+
+              <p>
+
+                Solutions are designed for
+                scalability, maintainability
+                and long-term platform health.
+
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="feature-item">
+
+            <div class="feature-check">
+              ✓
+            </div>
+
+            <div>
+
+              <h4>
+                Collaborative delivery
+              </h4>
+
+              <p>
+
+                Clear communication,
+                iterative delivery and close
+                partnership throughout the
+                engagement.
+
+              </p>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================
+       SERVICENOW
+       ========================================= -->
+
+  <section
+    class="platform"
+    id="servicenow"
+  >
+
+    <div class="container">
+
+
+      <div class="section-heading reveal">
+
+        <div class="section-tag">
+          ServiceNow Expertise
+        </div>
+
+        <h2 class="section-title">
+
+          Build connected experiences
+          across the enterprise.
+
+        </h2>
+
+        <p class="section-description">
+
+          We help organizations use the
+          ServiceNow platform to streamline
+          work, improve visibility and create
+          connected digital experiences.
+
+        </p>
+
+      </div>
+
+
+      <div class="platform-grid">
+
+
+        <div class="platform-card reveal">
+
+          <div class="platform-card-number">
+            01 / ITSM
+          </div>
+
+          <h3>
+            IT Service Management
+          </h3>
+
+          <p>
+
+            Modernize service delivery and
+            create consistent IT experiences
+            across the organization.
+
+          </p>
+
+        </div>
+
+
+        <div class="platform-card reveal">
+
+          <div class="platform-card-number">
+            02 / ITOM
+          </div>
+
+          <h3>
+            IT Operations Management
+          </h3>
+
+          <p>
+
+            Improve operational visibility
+            across infrastructure, services
+            and technology environments.
+
+          </p>
+
+        </div>
+
+
+        <div class="platform-card reveal">
+
+          <div class="platform-card-number">
+            03 / CSM
+          </div>
+
+          <h3>
+            Customer Service Management
+          </h3>
+
+          <p>
+
+            Connect customer issues with
+            the teams and workflows required
+            to resolve them effectively.
+
+          </p>
+
+        </div>
+
+
+        <div class="platform-card reveal">
+
+          <div class="platform-card-number">
+            04 / HRSD
+          </div>
+
+          <h3>
+            HR Service Delivery
+          </h3>
+
+          <p>
+
+            Simplify employee services
+            through modern workflows and
+            digital employee experiences.
+
+          </p>
+
+        </div>
+
+
+        <div class="platform-card reveal">
+
+          <div class="platform-card-number">
+            05 / CMDB
+          </div>
+
+          <h3>
+            CMDB & Discovery
+          </h3>
+
+          <p>
+
+            Improve configuration data
+            quality, governance and
+            enterprise service visibility.
+
+          </p>
+
+        </div>
+
+
+        <div class="platform-card reveal">
+
+          <div class="platform-card-number">
+            06 / SECOPS
+          </div>
+
+          <h3>
+            Security Operations
+          </h3>
+
+          <p>
+
+            Connect security processes
+            with automated workflows and
+            coordinated response.
+
+          </p>
+
+        </div>
+
+
+        <div class="platform-card reveal">
+
+          <div class="platform-card-number">
+            07 / APP ENGINE
+          </div>
+
+          <h3>
+            Custom Applications
+          </h3>
+
+          <p>
+
+            Create workflow applications
+            tailored to unique enterprise
+            processes and requirements.
+
+          </p>
+
+        </div>
+
+
+        <div class="platform-card reveal">
+
+          <div class="platform-card-number">
+            08 / AUTOMATION
+          </div>
+
+          <h3>
+            AI & Workflow Automation
+          </h3>
+
+          <p>
+
+            Introduce intelligent automation
+            to reduce repetitive work and
+            improve productivity.
+
+          </p>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================
+       APPROACH
+       ========================================= -->
+
+  <section
+    class="approach"
+    id="approach"
+  >
+
+    <div class="container approach-layout">
+
+
+      <div class="approach-intro reveal">
+
+        <div class="section-tag">
+          How We Work
+        </div>
+
+        <h2 class="section-title">
+
+          A clear path from idea
+          to impact.
+
+        </h2>
+
+        <p class="section-description">
+
+          Our delivery model keeps business
+          priorities, technology and users
+          aligned throughout the transformation
+          lifecycle.
+
+        </p>
+
+      </div>
+
+
+      <div class="approach-steps">
+
+
+        <div class="approach-step reveal">
+
+          <div class="step-number">
+            01
+          </div>
+
+          <div>
+
+            <h3>
+              Discover
+            </h3>
+
+            <p>
+
+              Understand business objectives,
+              users, existing processes,
+              technology constraints and
+              opportunities for improvement.
+
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="approach-step reveal">
+
+          <div class="step-number">
+            02
+          </div>
+
+          <div>
+
+            <h3>
+              Design
+            </h3>
+
+            <p>
+
+              Translate requirements into
+              a scalable architecture,
+              experience design and
+              implementation roadmap.
+
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="approach-step reveal">
+
+          <div class="step-number">
+            03
+          </div>
+
+          <div>
+
+            <h3>
+              Deliver
+            </h3>
+
+            <p>
+
+              Build and validate solutions
+              iteratively using agile
+              delivery, quality controls
+              and transparent communication.
+
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="approach-step reveal">
+
+          <div class="step-number">
+            04
+          </div>
+
+          <div>
+
+            <h3>
+              Optimize
+            </h3>
+
+            <p>
+
+              Continue improving adoption,
+              platform health and business
+              value as organizational
+              requirements evolve.
+
+            </p>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================
+       INDUSTRIES
+       ========================================= -->
+
+  <section
+    class="industries"
+    id="industries"
+  >
+
+    <div class="container">
+
+
+      <div class="section-heading reveal">
+
+        <div class="section-tag">
+          Industries
+        </div>
+
+        <h2 class="section-title">
+
+          Enterprise solutions across
+          complex environments.
+
+        </h2>
+
+        <p class="section-description">
+
+          Our technology capabilities can
+          support organizations across a
+          range of industries and operational
+          models.
+
+        </p>
+
+      </div>
+
+
+      <div class="industry-grid">
+
+
+        <div class="industry-card reveal">
+
+          <div class="industry-icon">
+            ◇
+          </div>
+
+          <div>
+            <strong>
+              Financial Services
+            </strong>
+
+            <span>
+              Connected enterprise operations
+            </span>
+          </div>
+
+        </div>
+
+
+        <div class="industry-card reveal">
+
+          <div class="industry-icon">
+            +
+          </div>
+
+          <div>
+            <strong>
+              Healthcare
+            </strong>
+
+            <span>
+              Digital workflow transformation
+            </span>
+          </div>
+
+        </div>
+
+
+        <div class="industry-card reveal">
+
+          <div class="industry-icon">
+            ▣
+          </div>
+
+          <div>
+            <strong>
+              Technology
+            </strong>
+
+            <span>
+              Modern platforms and automation
+            </span>
+          </div>
+
+        </div>
+
+
+        <div class="industry-card reveal">
+
+          <div class="industry-icon">
+            ⚙
+          </div>
+
+          <div>
+            <strong>
+              Manufacturing
+            </strong>
+
+            <span>
+              Operational workflow modernization
+            </span>
+          </div>
+
+        </div>
+
+
+        <div class="industry-card reveal">
+
+          <div class="industry-icon">
+            ◎
+          </div>
+
+          <div>
+            <strong>
+              Retail & Consumer
+            </strong>
+
+            <span>
+              Connected service experiences
+            </span>
+          </div>
+
+        </div>
+
+
+        <div class="industry-card reveal">
+
+          <div class="industry-icon">
+            ▦
+          </div>
+
+          <div>
+            <strong>
+              Professional Services
+            </strong>
+
+            <span>
+              Scalable digital operations
+            </span>
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================
+       CTA
+       ========================================= -->
+
+  <div class="cta-section">
+
+    <div class="container">
+
+      <div class="cta-panel reveal">
+
+
+        <div class="cta-copy">
+
+          <h2>
+
+            Have a transformation
+            initiative in mind?
+
+          </h2>
+
+          <p>
+
+            Let's talk about your current
+            environment, challenges and the
+            outcomes you want to achieve.
+
+          </p>
+
+        </div>
+
+
+        <a
+          href="mailto:hr@ngctcorp.com"
+          class="btn btn-light"
+        >
+
+          Contact NGCT
+
+          <span>→</span>
+
+        </a>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================
+       CONTACT
+       ========================================= -->
+
+  <section
+    class="contact"
+    id="contact"
+  >
+
+    <div class="container contact-layout">
+
+
+      <!-- CONTACT INFO -->
+
+      <div class="reveal">
+
+        <div class="section-tag">
+          Contact Us
+        </div>
+
+        <h2 class="section-title">
+
+          Let's start a
+          conversation.
+
+        </h2>
+
+        <p class="section-description">
+
+          Whether you're planning a new
+          implementation, modernizing an
+          existing platform or exploring
+          automation opportunities, we'd
+          be happy to hear from you.
+
+        </p>
+
+
+        <div class="contact-details">
+
+
+          <div class="contact-item">
+
+            <div class="contact-icon">
+              ✉
+            </div>
+
+            <div>
+
+              <small>
+                Email
+              </small>
+
+              <a
+                href="mailto:hr@ngctcorp.com"
+              >
+                hr@ngctcorp.com
+              </a>
+
+            </div>
+
+          </div>
+
+
+          <div class="contact-item">
+
+            <div class="contact-icon">
+              ◉
+            </div>
+
+            <div>
+
+              <small>
+                Organization
+              </small>
+
+              <span>
+                NGCT Corporation
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="contact-item">
+
+            <div class="contact-icon">
+              ⌖
+            </div>
+
+            <div>
+
+              <small>
+                Service Area
+              </small>
+
+              <span>
+                United States
+              </span>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+      <!-- CONTACT FORM -->
+
+      <form
+        class="contact-form reveal"
+        id="contactForm"
+      >
+
+        <h3 class="form-title">
+          Tell us about your needs
+        </h3>
+
+
+        <div class="form-grid">
+
+
+          <div class="field">
+
+            <label for="firstName">
+              First Name
+            </label>
+
+            <input
+              id="firstName"
+              name="firstName"
+              type="text"
+              autocomplete="given-name"
+              required
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="lastName">
+              Last Name
+            </label>
+
+            <input
+              id="lastName"
+              name="lastName"
+              type="text"
+              autocomplete="family-name"
+              required
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="email">
+              Business Email
+            </label>
+
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="company">
+              Company
+            </label>
+
+            <input
+              id="company"
+              name="company"
+              type="text"
+              autocomplete="organization"
+            >
+
+          </div>
+
+
+          <div class="field full">
+
+            <label for="service">
+              What can we help with?
+            </label>
+
+            <select
+              id="service"
+              name="service"
+            >
+
+              <option>
+                ServiceNow Consulting
+              </option>
+
+              <option>
+                Implementation & Development
+              </option>
+
+              <option>
+                Integration
+              </option>
+
+              <option>
+                Automation & AI
+              </option>
+
+              <option>
+                Cloud Transformation
+              </option>
+
+              <option>
+                Platform Optimization
+              </option>
+
+              <option>
+                Other
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="field full">
+
+            <label for="message">
+              Message
+            </label>
+
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Tell us briefly about your project or requirement..."
+              required
+            ></textarea>
+
+          </div>
+
+
+        </div>
+
+
+        <button
+          class="btn btn-primary"
+          type="submit"
+        >
+
+          Send Inquiry
+
+          <span>→</span>
+
+        </button>
+
+
+        <p class="form-note">
+
+          Submitting this form will open
+          your email application with the
+          information addressed to
+          hr@ngctcorp.com.
+
+        </p>
+
+
+      </form>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================
+       FOOTER
+       ========================================= -->
+
+  <footer class="footer">
+
+    <div class="container">
+
+
+      <div class="footer-main">
+
+
+        <div>
+
+          <a
+            href="#home"
+            class="brand"
+          >
+
+            <div class="brand-mark">
+              N
+            </div>
+
+            <div class="brand-text">
+
+              <span class="brand-name">
+                NGCT Corporation
+              </span>
+
+              <span class="brand-subtitle">
+                Enterprise Technology
+              </span>
+
+            </div>
+
+          </a>
+
+
+          <p class="footer-brand-copy">
+
+            Enterprise technology solutions
+            focused on connected workflows,
+            ServiceNow, automation, cloud
+            modernization and sustainable
+            digital transformation.
+
+          </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h4>
+            Company
+          </h4>
+
+          <div class="footer-links">
+
+            <a href="#about">
+              About
+            </a>
+
+            <a href="#approach">
+              Our Approach
+            </a>
+
+            <a href="#contact">
+              Contact
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h4>
+            Capabilities
+          </h4>
+
+          <div class="footer-links">
+
+            <a href="#servicenow">
+              ServiceNow
+            </a>
+
+            <a href="#services">
+              Automation & AI
+            </a>
+
+            <a href="#services">
+              Integration
+            </a>
+
+            <a href="#services">
+              Cloud
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h4>
+            Connect
+          </h4>
+
+          <div class="footer-links">
+
+            <a
+              href="mailto:hr@ngctcorp.com"
+            >
+              hr@ngctcorp.com
+            </a>
+
+            <a href="#contact">
+              Start a Conversation
+            </a>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <span>
+
+          ©
+          <span id="currentYear"></span>
+          NGCT Corporation.
+          All rights reserved.
+
+        </span>
+
+
+        <span>
+
+          Enterprise Technology &
+          Digital Transformation
+
+        </span>
+
+      </div>
+
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================================
+       JAVASCRIPT
+       ========================================= -->
+
+  <script>
+
+    /* -------------------------------
+       NAVBAR
+       ------------------------------- */
+
+    const navbar =
+      document.getElementById("navbar");
+
+    function updateNavbar() {
+
+      if (window.scrollY > 30) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+
+    }
+
+    updateNavbar();
+
+    window.addEventListener(
+      "scroll",
+      updateNavbar
+    );
+
+
+    /* -------------------------------
+       MOBILE MENU
+       ------------------------------- */
+
+    const menuButton =
+      document.getElementById("menuButton");
+
+    const navLinks =
+      document.getElementById("navLinks");
+
+
+    menuButton.addEventListener(
+      "click",
+      function () {
+
+        const isOpen =
+          navLinks.classList.toggle("open");
+
+        document.body.classList.toggle(
+          "menu-open",
+          isOpen
+        );
+
+        menuButton.setAttribute(
+          "aria-expanded",
+          isOpen
+        );
+
+      }
+    );
+
+
+    document
+      .querySelectorAll("#navLinks a")
+      .forEach(function (link) {
+
+        link.addEventListener(
+          "click",
+          function () {
+
+            navLinks.classList.remove("open");
+
+            document.body.classList.remove(
+              "menu-open"
+            );
+
+            menuButton.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+          }
+        );
+
+      });
+
+
+    /* -------------------------------
+       SCROLL REVEAL
+       ------------------------------- */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+
+    if ("IntersectionObserver" in window) {
+
+      const revealObserver =
+        new IntersectionObserver(
+
+          function (entries, observer) {
+
+            entries.forEach(
+              function (entry) {
+
+                if (entry.isIntersecting) {
+
+                  entry.target.classList.add(
+                    "visible"
+                  );
+
+                  observer.unobserve(
+                    entry.target
+                  );
+
+                }
+
+              }
+            );
+
+          },
+
+          {
+            threshold: 0.12
+          }
+
+        );
+
+
+      revealElements.forEach(
+        function (element) {
+
+          revealObserver.observe(element);
+
+        }
+      );
+
+    } else {
+
+      revealElements.forEach(
+        function (element) {
+
+          element.classList.add("visible");
+
+        }
+      );
+
+    }
+
+
+    /* -------------------------------
+       CURRENT YEAR
+       ------------------------------- */
+
+    document.getElementById(
+      "currentYear"
+    ).textContent =
+      new Date().getFullYear();
+
+
+    /* -------------------------------
+       CONTACT FORM
+
+       GitHub Pages cannot run a backend.
+
+       For now, submitting the form opens
+       the visitor's email application and
+       creates an email to hr@ngctcorp.com.
+       ------------------------------- */
+
+    const contactForm =
+      document.getElementById("contactForm");
+
+
+    contactForm.addEventListener(
+      "submit",
+      function (event) {
+
+        event.preventDefault();
+
+
+        const firstName =
+          document.getElementById(
+            "firstName"
+          ).value.trim();
+
+        const lastName =
+          document.getElementById(
+            "lastName"
+          ).value.trim();
+
+        const email =
+          document.getElementById(
+            "email"
+          ).value.trim();
+
+        const company =
+          document.getElementById(
+            "company"
+          ).value.trim();
+
+        const service =
+          document.getElementById(
+            "service"
+          ).value;
+
+        const message =
+          document.getElementById(
+            "message"
+          ).value.trim();
+
+
+        const subject =
+          "Website Inquiry - " +
+          service;
+
+
+        const body =
+          "Hello NGCT Corporation,%0D%0A%0D%0A" +
+
+          "Name: " +
+          encodeURIComponent(
+            firstName + " " + lastName
+          ) +
+          "%0D%0A" +
+
+          "Email: " +
+          encodeURIComponent(email) +
+          "%0D%0A" +
+
+          "Company: " +
+          encodeURIComponent(
+            company || "Not provided"
+          ) +
+          "%0D%0A" +
+
+          "Area of Interest: " +
+          encodeURIComponent(service) +
+          "%0D%0A%0D%0A" +
+
+          "Message:%0D%0A" +
+          encodeURIComponent(message);
+
+
+        window.location.href =
+          "mailto:hr@ngctcorp.com" +
+          "?subject=" +
+          encodeURIComponent(subject) +
+          "&body=" +
+          body;
+
+      }
+    );
+
+  </script>
+
+
+</body>
+</html>
